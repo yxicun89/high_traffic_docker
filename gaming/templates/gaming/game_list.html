@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Game List</title>
+</head>
+<body>
+    <h1>Game List</h1>
+    <ul>
+        {% for game in object_list %}
+            <li>{{ game.title }} - {{ game.genre }}</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
