@@ -1,41 +1,43 @@
-# high-traffic-backend/high-traffic-backend/README.md
-
 # High Traffic Backend
 
-This project is designed to provide a scalable and load-balanced backend solution for high-traffic services, specifically focusing on gaming and video streaming applications. 
+このプロジェクトは、特にゲームおよびビデオストリーミングアプリケーションに焦点を当てた、高トラフィックサービス向けのスケーラブルでロードバランスされたバックエンドソリューションを提供することを目的としています。
 
-## Project Structure
+## プロジェクト構成
 
-- **gaming/**: Contains the gaming application with models, views, and URL routing.
-- **video_streaming/**: Contains the video streaming application with models, views, and URL routing.
-- **load_balancer/**: Implements load balancing logic to distribute traffic across multiple servers.
-- **high_traffic_backend/**: The main Django project directory containing settings and configurations.
-- **manage.py**: Command-line utility for interacting with the Django project.
-- **requirements.txt**: Lists the dependencies required for the project.
+- **gaming/**: モデル、ビュー、およびURLルーティングを含むゲームアプリケーション。
+- **video_streaming/**: モデル、ビュー、およびURLルーティングを含むビデオストリーミングアプリケーション。
+- **load_balancer/**: 複数のサーバーにトラフィックを分散するためのロードバランシングロジックを実装。
+- **high_traffic_backend/**: 設定および構成を含むメインのDjangoプロジェクトディレクトリ。
+- **manage.py**: Djangoプロジェクトと対話するためのコマンドラインユーティリティ。
+- **requirements.txt**: プロジェクトに必要な依存関係をリスト。
 
-## Features
+## 特徴
 
-- Load balancing for efficient traffic distribution.
-- Scalable architecture to handle high traffic.
-- Modular applications for gaming and video streaming.
+- 効率的なトラフィック分散のためのロードバランシング。
+- 高トラフィックを処理するためのスケーラブルなアーキテクチャ。
+- ゲームおよびビデオストリーミングのためのモジュラーアプリケーション。
 
-## Installation
+## インストール
 
-1. Clone the repository.
-2. Navigate to the project directory.
-3. Install the required dependencies:
+1. リポジトリをクローンします。
+    ```sh
+    git clone <リポジトリのURL>
+    ```
+2. プロジェクトディレクトリに移動します。
+    ```sh
+    cd high_traffic
+    ```
+3. Dockerを使用して環境を構築します。
+    ```sh
+    docker-compose -f docker/docker-compose.yaml up --build
+    ```
+4. データベースマイグレーションを実行します。
+    ```sh
+    docker-compose -f docker/docker-compose.yaml exec web python manage.py migrate
+    ```
+5. lucastでロードバランシングテストを行います。
+   ```sh
+   docker-compose -f docker/docker-compose.yaml exec web python run_locust_tests.py
    ```
-   pip install -r requirements.txt
-   ```
-4. Run the server:
-   ```
-   python manage.py runserver
-   ```
 
-## Contributing
-
-Contributions are welcome! Please open an issue or submit a pull request for any enhancements or bug fixes.
-
-## License
-
-This project is licensed under the MIT License.
+これで、Dockerを使用してDjango環境が構築され、アプリケーションを起動する準備が整いました。
