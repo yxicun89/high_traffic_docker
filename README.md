@@ -40,4 +40,4 @@
    docker-compose -f docker/docker-compose.yaml exec web python run_locust_tests.py
    ```
 
-これで、Dockerを使用してDjango環境が構築され、アプリケーションを起動する準備が整いました。
+これで、Dockerを使用してDjango環境が構築され、負荷分散のテストを行えます！
